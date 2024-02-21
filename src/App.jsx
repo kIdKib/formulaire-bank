@@ -2,6 +2,8 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 import Form1 from "./first-steps/Form1"
 import AccountType from './first-steps/AccoutType';
+
+
 import UsForm1 from './user-form/UsForm1';
 import UsForm2 from './user-form/UsForm2';
 import UsForm3 from './user-form/UsForm3';
@@ -17,6 +19,15 @@ import Mineur from './user-form/packages/Mineur';
 import IncPack from './user-form/packages/sousPack/IncPack';
 import OptPack from './user-form/packages/sousPack/OptPack';
 import Convention from './components/Conventions';
+
+
+import CoForm1 from './company-form/CoForm1';
+import CoForm2 from './company-form/CoForm2';
+import CoForm3 from './company-form/CoForm3';
+import CoForm4 from './company-form/CoForm4';
+import CoForm5 from './company-form/CoForm5';
+import CoForm6 from './company-form/CoForm6';
+import CoPackages from './company-form/CoPackages';
 
 const router = createBrowserRouter([
   {
@@ -149,6 +160,40 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/company/',
+    children: [
+      {
+        path: '/company/form1',
+        element: <CoForm1 />
+      },
+      {
+        path: '/company/form2',
+        element: <CoForm2 />
+      },
+      {
+        path: '/company/form3',
+        element: <CoForm3 />
+      },
+      {
+        path: '/company/form4',
+        element: <CoForm4 />
+      },
+      {
+        path: '/company/form5',
+        element: <CoForm5 />
+      },
+      {
+        path: '/company/form6',
+        element: <CoForm6 />
+      },
+      {
+        path:'/company/packages',
+        element: <CoPackages />
+      }
+    ]
+  }
+  
 ])
 
 function App() {

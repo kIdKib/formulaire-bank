@@ -1,6 +1,7 @@
 import React from "react";
 import StepLoader from "./StepLoader";
 
+//Configuration dropdown
 import {
     Accordion,
     AccordionHeader,
@@ -9,6 +10,20 @@ import {
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
+//Configuration dropdown
+
+
+//Configuration modal
+import {
+    Button,
+    Dialog,
+    DialogHeader,
+    DialogBody,
+    DialogFooter,
+} from "@material-tailwind/react";
+//Configuration modal
+
+
 
 function Icon({ id, open }) {
     return (
@@ -25,18 +40,32 @@ function Icon({ id, open }) {
     );
 }
 
+
 const Convention = () => {
+
+    //Configuration dropdown
     const [open, setOpen] = React.useState(1);
-
-    const location = useLocation()
-    console.log();
-
-    const {register, handleSubmit} = useForm()
- 
     const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
-    const onSubmit = (data) => {
-        
+    const location = useLocation()
+    console.log(location.state);
+
+    const {register, handleSubmit} = useForm()
+    //Configuration dropdown
+    
+
+
+    //Configuration modal
+    const [openModal, setOpenModal] = React.useState(false);
+ 
+    const handleOpenModal = () => setOpenModal(!openModal);
+    //Configuration modal
+
+    const handleOnSubmit = () => {
+        const checkbox = document.getElementById('checkbox')
+        if (checkbox.checked) {
+            console.log('tu as le droit de passer au suivant');
+        }
     }
 
     console.log()
@@ -163,23 +192,89 @@ const Convention = () => {
                 </AccordionBody>
             </Accordion>
 
-            <form action="" className="w-full mt-5 text-center" onSubmit={handleSubmit(onSubmit)}>
-                <input type="checkbox" name="" id="" {...register("conditionACPT",{required: true})} />
+            <div className="w-full mt-5 text-center">
+                <input type="checkbox" name="" id="checkbox"/>
                 <label htmlFor="" className="ml-1">J’ai lu et j’accepte les termes et conditions</label>
-            </form>
+            </div>
         </div>
 
-        <div className="flex justify-between">
-            <button className= 'flex items-center' >
-                <div className= 'flex justify-center items-center text-4xl text-white bg-black mr-2 rounded-full border w-16 h-16' ><FaAngleLeft/></div>
-                <span className={`text-2xl `}></span>
+        <div className="flex justify-center items-center bg-black">
+            <button className="flex items-center justify-center p-2 m-3 text-white bg-orange-900 w-[90%]" onClick={handleOnSubmit}>
+                Confirmer la soumission
             </button>
-            <button className="flex items-center ">
-                <span className="text-2xl text-orange-600"></span>
-                <div className={`flex justify-center items-center text-4xl text-white bg-orange-600 ml-2 rounded-full border w-16 h-16`}><FaAngleRight/></div>
-            </button>
+            
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div  onClick={handleOpenModal} className="flex justify-center items-center bg-black">
+            <button className="flex items-center justify-center p-2 m-3 text-white bg-orange-900 w-[90%]" onClick={handleOnSubmit}>
+                Confirmer la soumission
+            </button>
+            
+        </div>
+
+
+
+        <Dialog open={openModal} handler={handleOpenModal}>
+            <DialogHeader>Its a simple dialog.</DialogHeader>
+            <DialogBody>
+                The key to more success is to have a lot of pillows. Put it this way,
+                it took me twenty five years to get these plants, twenty five years of
+                blood sweat and tears, and I&apos;m never giving up, I&apos;m just
+                getting started. I&apos;m up to something. Fan luv.
+            </DialogBody>
+            <DialogFooter>
+                <Button
+                    variant="text"
+                    color="red"
+                    onClick={handleOpenModal}
+                    className="mr-1"
+                >
+                    <span>Cancel</span>
+                </Button>
+                <Button variant="gradient" color="green" onClick={handleOpenModal}>
+                    <span>Confirm</span>
+                </Button>
+            </DialogFooter>
+      </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     </div> );
 }
+
  
 export default Convention;
