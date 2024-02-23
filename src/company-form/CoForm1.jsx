@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 
 const CoForm1 = () => {
 
-    const {register, handleSubmit, formState, getValues, watch} = useForm()
+    const {register, handleSubmit, formState} = useForm()
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)

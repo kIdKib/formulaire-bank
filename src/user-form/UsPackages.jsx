@@ -23,9 +23,9 @@ const UsPackages = () => {
 
     useEffect(() => {
         if (etat !== undefined) {
-            console.log(etat);
+            let etatTab = Object.entries(etat)
             
-            setfuseData([...loactionData, etat])
+            if (etatTab !== undefined) setfuseData([...loactionData,...etatTab])
         }
     }, [etat])
 
@@ -41,7 +41,7 @@ const UsPackages = () => {
 
     return ( <div className="w-1/3 px-4 border">
 
-        {sub && <Navigate state={fuseData} to={`/user/packages/${etat}/include`} />}
+        {sub && <Navigate state={fuseData} to={`/company/packages/${etat}/include`} />}
 
         <StepLoader texte={'Packages disponible'} niv={1} />
         <p className="my-5">

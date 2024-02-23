@@ -45,6 +45,7 @@ const CoForm4 = () => {
     }, [fuseData])
     //GERE TOUTE LA PARTIE DE RECEPTION DES ANCIENNES DONNNÉE ET DES NOUVELLE DONNÉE
 
+
     return ( <div className="w-1/3 px-4 border">
 
         {sub && <Navigate state={fuseData} to='/company/form5' />}

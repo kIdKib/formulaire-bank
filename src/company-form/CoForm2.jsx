@@ -12,10 +12,9 @@ const CoForm2 = () => {
     const {register, handleSubmit} = useForm()
 
     //GERE TOUTE LA PARTIE DE RECEPTION DES ANCIENNES DONNNÉE ET DES NOUVELLE DONNÉE
-    let tabData
-
     const location = useLocation()
     const loactionData = Object.entries(location.state)
+    console.log(location.state);
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
@@ -108,7 +107,7 @@ const CoForm2 = () => {
 
                 </div>
 
-                <FootBut disabled={true} dataForm={etat}/>
+                <FootBut dataForm={etat}/>
             </form>
             
         </div>

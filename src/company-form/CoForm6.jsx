@@ -45,6 +45,7 @@ const CoForm6 = () => {
     }, [fuseData])
     //GERE TOUTE LA PARTIE DE RECEPTION DES ANCIENNES DONNNÉE ET DES NOUVELLE DONNÉE
 
+    console.log(location.state);
 
     return ( <div className="w-1/3 px-4 border">
 
@@ -118,7 +119,7 @@ const CoForm6 = () => {
 
                 </div>
 
-                <FootBut disabled={true} dataForm={etat}/>
+                <FootBut dataForm={etat}/>
             </form>
             
         </div>

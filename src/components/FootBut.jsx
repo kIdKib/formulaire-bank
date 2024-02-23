@@ -1,12 +1,12 @@
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const FootBut = ({disabled, first= 'RETOUR', second= "SUIVANT"}) => {
 
+    let h = useNavigate()
     return ( <div className="flex justify-between">
-              <Link to={'..'}>Go back</Link>
 
-        <button className= {`flex items-center`} disabled={disabled ? true : false }>
+        <button className= {`flex items-center`} onClick={() => h(-1)} disabled={disabled ? true : false }>
             <div className= {`flex justify-center items-center text-4xl text-white bg-black mr-2 rounded-full border w-16 h-16 ${disabled ? 'text-white-200 bg-slate-200' : ""}`} ><FaAngleLeft/></div>
             <span className={`text-xl ${disabled ? 'text-gray-300' : ""}`} >{first}</span>
         </button>

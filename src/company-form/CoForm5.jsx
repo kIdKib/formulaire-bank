@@ -44,8 +44,6 @@ const CoForm5 = () => {
         if (fuseData !== undefined) setSub(true)
     }, [fuseData])
     //GERE TOUTE LA PARTIE DE RECEPTION DES ANCIENNES DONNNÉE ET DES NOUVELLE DONNÉE
-
-
     return ( <div className="w-1/3 px-4 border">
 
         {sub && <Navigate state={fuseData} to='/company/form6' />}
@@ -88,7 +86,7 @@ const CoForm5 = () => {
                     
                 </div>
 
-                <FootBut disabled={true} dataForm={etat}/>
+                <FootBut dataForm={etat}/>
             </form>
             
         </div>

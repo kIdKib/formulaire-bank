@@ -28,6 +28,10 @@ import CoForm4 from './company-form/CoForm4';
 import CoForm5 from './company-form/CoForm5';
 import CoForm6 from './company-form/CoForm6';
 import CoPackages from './company-form/CoPackages';
+import GrandeEntreprise from './company-form/packages/GrandeEntreprise';
+import PME_TPE from './company-form/packages/PME_TPE';
+import Preofessionnel from './company-form/packages/Preofessionnel';
+import AssoMutuelle from './company-form/packages/AssoMutuelle';
 
 const router = createBrowserRouter([
   {
@@ -189,8 +193,24 @@ const router = createBrowserRouter([
       },
       {
         path:'/company/packages',
-        element: <CoPackages />
-      }
+        element: <CoPackages />,
+      }, 
+      {
+        path: '/company/packages/grdEntreprise',
+        element:<GrandeEntreprise />
+      },
+      {
+        path: '/company/packages/PME_TPE',
+        element:<PME_TPE />
+      },
+      {
+        path: '/company/packages/Professionnel',
+        element:<Preofessionnel />
+      },
+      {
+        path: '/company/packages/AssoMutuelle',
+        element:<AssoMutuelle />
+      },
     ]
   }
   
