@@ -7,7 +7,8 @@ import {
     AccordionHeader,
     AccordionBody,
 } from "@material-tailwind/react";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import { FaAngleLeft, FaAngleRight, } from "react-icons/fa6";
+import { IoDocumentTextSharp } from "react-icons/io5";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 //Configuration dropdown
@@ -58,15 +59,15 @@ const Convention = () => {
     //Configuration modal
     const [openModal, setOpenModal] = React.useState(false);
  
-    const handleOpenModal = () => setOpenModal(!openModal);
-    //Configuration modal
 
-    const handleOnSubmit = () => {
+    const handleOpenModal = () => {
         const checkbox = document.getElementById('checkbox')
         if (checkbox.checked) {
+            setOpenModal(!openModal);
             console.log('tu as le droit de passer au suivant');
         }
     }
+    //Configuration modal
 
     console.log()
  
@@ -198,14 +199,6 @@ const Convention = () => {
             </div>
         </div>
 
-        <div className="flex justify-center items-center bg-black">
-            <button className="flex items-center justify-center p-2 m-3 text-white bg-orange-900 w-[90%]" onClick={handleOnSubmit}>
-                Confirmer la soumission
-            </button>
-            
-        </div>
-
-
 
 
 
@@ -221,7 +214,7 @@ const Convention = () => {
 
 
         <div  onClick={handleOpenModal} className="flex justify-center items-center bg-black">
-            <button className="flex items-center justify-center p-2 m-3 text-white bg-orange-900 w-[90%]" onClick={handleOnSubmit}>
+            <button className="flex items-center justify-center p-2 m-3 text-white bg-orange-900 w-[90%]" >
                 Confirmer la soumission
             </button>
             
@@ -229,16 +222,23 @@ const Convention = () => {
 
 
 
-        <Dialog open={openModal} handler={handleOpenModal}>
-            <DialogHeader>Its a simple dialog.</DialogHeader>
+        <Dialog open={openModal} handler={handleOpenModal} className="flex flex-col items-center">
+            <DialogHeader>
+                <div style={{fontSize:"100px"}}>
+                    <IoDocumentTextSharp/>
+                </div>
+            </DialogHeader>
             <DialogBody>
-                The key to more success is to have a lot of pillows. Put it this way,
-                it took me twenty five years to get these plants, twenty five years of
-                blood sweat and tears, and I&apos;m never giving up, I&apos;m just
-                getting started. I&apos;m up to something. Fan luv.
+                <p className="text-3xl text-center">
+                    Votre formulaire de pré inscription
+                    a été soumis avec succès!
+                </p>
+                <p className="mt-12 text-center">
+                    Un de nos agents vous contactera.
+                </p>
             </DialogBody>
             <DialogFooter>
-                <Button
+                {/* <Button
                     variant="text"
                     color="red"
                     onClick={handleOpenModal}
@@ -248,7 +248,7 @@ const Convention = () => {
                 </Button>
                 <Button variant="gradient" color="green" onClick={handleOpenModal}>
                     <span>Confirm</span>
-                </Button>
+                </Button> */}
             </DialogFooter>
       </Dialog>
 

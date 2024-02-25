@@ -8,12 +8,14 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const UsForm4 = () => {
 
-    const {register, handleSubmit, formState, getValues, watch} = useForm()
+    const {register, handleSubmit} = useForm()
 
     //GERE TOUTE LA PARTIE DE RECEPTION DES ANCIENNES DONNNÉE ET DES NOUVELLE DONNÉE
+    let tabData =[]
+
     const location = useLocation()
     const loactionData = Object.entries(location.state)
-    console.log(loactionData)
+    console.log(location.state);
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
@@ -27,9 +29,21 @@ const UsForm4 = () => {
     useEffect(() => {
         if (etat !== undefined) {
             let etatTab = Object.entries(etat)
-            
-            if (etatTab !== undefined) setfuseData([...loactionData,...etatTab])
+
+            for (let i = 0; i < location.state.length; i++) {
+                
+                if (i > 1) {
+                    let data = [location.state[i][0], location.state[i][1] ] 
+                    tabData.push(data)
+                } else {
+                    let data = [location.state[i][0]] 
+                    tabData.push(data)
+                }
+            }
+
+            if (etatTab !== undefined && tabData !== undefined) setfuseData([...tabData,...etatTab])
         }
+
     }, [etat])
 
     useEffect(() => {

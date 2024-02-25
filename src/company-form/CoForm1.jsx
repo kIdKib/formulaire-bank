@@ -5,14 +5,23 @@ import { useForm } from 'react-hook-form'
 
 import CountriesList from "./Component/CountryList"
 import FootBut from "../components/FootBut";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const CoForm1 = () => {
 
-    const {register, handleSubmit, formState} = useForm()
+    const {register, handleSubmit} = useForm()
+
+    //GERE TOUTE LA PARTIE DE RECEPTION DES ANCIENNES DONNNÉE ET DES NOUVELLE DONNÉE
+    let tabData =[]
+
+    const location = useLocation()
+    const loactionData = Object.entries(location.state)
+    console.log(location.state);
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
+
+    const [fuseData, setfuseData] = useState()
 
     const onSubmit = (data) => {
         setEtat(data)
@@ -20,14 +29,33 @@ const CoForm1 = () => {
 
     useEffect(() => {
         if (etat !== undefined) {
-            setSub(true)
+            let etatTab = Object.entries(etat)
+
+            for (let i = 0; i < location.state.length; i++) {
+                
+                if (i > 1) {
+                    let data = [location.state[i][0], location.state[i][1] ] 
+                    tabData.push(data)
+                } else {
+                    let data = [location.state[i]] 
+                    tabData.push(data)
+                }
+            }
+
+            if (etatTab !== undefined && tabData !== undefined) setfuseData([...tabData,...etatTab])
         }
-        
+
     }, [etat])
+
+    useEffect(() => {
+        if (fuseData !== undefined) setSub(true)
+    }, [fuseData])
+    //GERE TOUTE LA PARTIE DE RECEPTION DES ANCIENNES DONNNÉE ET DES NOUVELLE DONNÉE
+
 
     return ( <div className="w-1/3 px-4 border">
 
-        {sub && <Navigate state={etat} to='/company/form2' />}
+        {sub && <Navigate state={fuseData} to='/company/form2' />}
 
         <StepLoader texte={'Titulaire du compte'} niv={1} />
         <div>

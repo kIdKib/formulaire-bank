@@ -95,7 +95,7 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: '/user/packages/Presitge',
+    path: '/user/packages/Prestige',
     element: <Prestige />,
     children: [
       {
@@ -210,6 +210,10 @@ const router = createBrowserRouter([
       {
         path: '/company/packages/AssoMutuelle',
         element:<AssoMutuelle />
+      },
+      {
+        path: '/company/convention',
+        element:<Convention />
       },
     ]
   }

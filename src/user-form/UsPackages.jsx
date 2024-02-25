@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import StepLoader from "../components/StepLoader";
 
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 const UsPackages = () => {
 
+    let h = useNavigate()
+
     //GERE TOUTE LA PARTIE DE RECEPTION DES ANCIENNES DONNNÉE ET DES NOUVELLE DONNÉE
+    let tabData = []
     const location = useLocation()
     let loactionData = Object.entries(location.state)   
-    console.log(location.state)
 
 
     const [etat, setEtat] = useState()
@@ -23,16 +25,27 @@ const UsPackages = () => {
 
     useEffect(() => {
         if (etat !== undefined) {
-            let etatTab = Object.entries(etat)
-            
-            if (etatTab !== undefined) setfuseData([...loactionData,...etatTab])
+            let etatTab = etat
+
+            for (let i = 0; i < location.state.length; i++) {
+                
+                if (i > 1) {
+                    let data = [location.state[i][0], location.state[i][1] ] 
+                    tabData.push(data)
+                } else {
+                    let data = [location.state[i][0]] 
+                    tabData.push(data)
+                }
+            }
+
+            if (etatTab !== undefined && tabData !== undefined) setfuseData([...tabData,etatTab])
         }
     }, [etat])
 
 
-    console.log(loactionData);
+    console.log(location.state);
+    console.log(etat);
 
-    console.log(fuseData);
     
     const handleOnSubmit = () => {
         if (fuseData !== undefined) setSub(true)
@@ -41,7 +54,7 @@ const UsPackages = () => {
 
     return ( <div className="w-1/3 px-4 border">
 
-        {sub && <Navigate state={fuseData} to={`/company/packages/${etat}/include`} />}
+        {sub && <Navigate state={fuseData} to={`/user/packages/${etat}/include`} />}
 
         <StepLoader texte={'Packages disponible'} niv={1} />
         <p className="my-5">
@@ -63,11 +76,11 @@ const UsPackages = () => {
                     <h2 className="text-2xl mb-3 text-center">Pack <br /> Prestige</h2>
                     <p className="font-bold">8000 FCFA/mois</p>
                 </div>
-                <div onClick={() => handleOnClick('Bonne Gamme')} className="w-[48%] mx-auto my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
+                <div onClick={() => handleOnClick('BonneGamme')} className="w-[48%] mx-auto my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
                     <h2 className="text-2xl mb-3 text-center">Pack <br /> Bonne Gamme</h2>
                     <p className="font-bold">8000 FCFA/mois</p>
                 </div>
-                <div onClick={() => handleOnClick('Mass Market')} className="w-[48%] mx-auto my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
+                <div onClick={() => handleOnClick('MassMarket')} className="w-[48%] mx-auto my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
                     <h2 className="text-2xl mb-3 text-center">Pack <br /> Mass Market</h2>
                     <p className="font-bold">8000 FCFA/mois</p>
                 </div>
@@ -82,13 +95,13 @@ const UsPackages = () => {
         </div>
 
         <div className="flex justify-between">
-            <button className= {`flex items-center`} >
+            <button className= {`flex items-center`} onClick={() => h(-1)}>
                 <div className= {`flex justify-center items-center text-4xl text-white bg-black mr-2 rounded-full border w-16 h-16 text-white-200 bg-slate-200' `} ><FaAngleLeft/></div>
-                <span className={`text-2xl text-gray-300 `} >RETOUR</span>
+                <span className={`text-2xl `} >RETOUR</span>
             </button>
             <button onClick={handleOnSubmit} className="flex items-center ">
-                <span className="text-2xl text-orange-600">Je passe</span>
-                <div className={`flex justify-center items-center text-4xl text-white bg-orange-600 ml-2 rounded-full border w-16 h-16`}><FaAngleRight/></div>
+                <span className="text-2xl text-orange-600">Je passe </span>
+                <div className={`flex justify-center items-center text-4xl text-orange-600 ml-[-20px]  w-16 h-16`}><FaAngleRight/></div>
             </button>
         </div>
     </div> );

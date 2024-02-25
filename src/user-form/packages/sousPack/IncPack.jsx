@@ -1,10 +1,12 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import data from "./PackDetails"
 import { useEffect, useState } from "react";
 import FootBut from "../../../components/FootBut";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 const IncPack = () => {
+
+    let h = useNavigate()
 
     const location = useLocation()
     let locationData = location.state
@@ -48,6 +50,7 @@ const IncPack = () => {
         }
     }
     console.log(fuseData);
+
     return ( <div className="mt-14">
         {sub && <Navigate state={fuseData} to='/user/convention' />}
 
@@ -67,12 +70,12 @@ const IncPack = () => {
         </div>
         
         <div className="flex justify-between">
-            <button className= {`flex items-center`} >
+            <button className= {`flex items-center`} onClick={() => h(-1)}>
                 <div className= {`flex justify-center items-center text-4xl text-white bg-black mr-2 rounded-full border w-16 h-16 text-white-200 bg-slate-200' `} ><FaAngleLeft/></div>
-                <span className={`text-xl text-gray-300 `} >RETOUR</span>
+                <span className={`text-xl `} >RETOUR</span>
             </button>
             <button onClick={() => handleOnSubmit('IncPack')} className="flex items-center ">
-                <span className="text-xl text-orange-600">Je soucris</span>
+                <span className="text-xl text-orange-600">JE SOUSCRIS</span>
                 <div className={`flex justify-center items-center text-4xl text-white bg-orange-600 ml-2 rounded-full border w-16 h-16`}><FaAngleRight/></div>
             </button>
         </div>

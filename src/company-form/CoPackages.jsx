@@ -31,8 +31,14 @@ const CoPackages = () => {
             let etatTab = Object.entries(etat)
 
             for (let i = 0; i < location.state.length; i++) {
-                let data = [location.state[i][0], location.state[i][1] ]
-                tabData.push(data)
+                
+                if (i > 1) {
+                    let data = [location.state[i][0], location.state[i][1] ] 
+                    tabData.push(data)
+                } else {
+                    let data = [location.state[i][0]] 
+                    tabData.push(data)
+                }
             }
 
             if (etatTab !== undefined && tabData !== undefined) setfuseData([...tabData,...etatTab])
@@ -62,22 +68,22 @@ const CoPackages = () => {
         </div>
 
         <div className="flex mt-5 w-full flex-col">
-            <div onClick={() => handleOnClick(['grdEntreprise','company'])} className="w-2/3 self-end flex justify-center items-center relative my-8 h-[90px]">
+            <div onClick={() => handleOnClick(['grdEntreprise'])} className="w-2/3 self-end flex justify-center items-center relative my-8 h-[90px]">
                 <img src={immeuble} alt="" className="absolute h-full w-full object-cover"/>
                 <div className="h-full w-full absolute bg-black opacity-50"></div>
                 <p className="relative text-white">Grandes entreprises</p>
             </div>  
-            <div onClick={() => handleOnClick(['PME_TPE','company'])} className="w-2/3 self-start flex justify-center items-center relative my-8 h-[90px]">
+            <div onClick={() => handleOnClick(['PME_TPE'])} className="w-2/3 self-start flex justify-center items-center relative my-8 h-[90px]">
                 <img src={payement} alt="" className="absolute h-full w-full object-cover"/>
                 <div className="h-full w-full absolute bg-black opacity-50"></div>
                 <p className="relative text-white">PME/TPE</p>
             </div>  
-            <div onClick={() => handleOnClick(['Professionnel','company'])} className="w-2/3 self-end flex justify-center items-center relative my-8 h-[90px]">
+            <div onClick={() => handleOnClick(['Professionnel'])} className="w-2/3 self-end flex justify-center items-center relative my-8 h-[90px]">
                 <img src={personnel} alt="" className="absolute h-full w-full object-cover"/>
                 <div className="h-full w-full absolute bg-black opacity-50"></div>
                 <p className="relative text-white">Professionnel</p>
             </div>  
-            <div onClick={() => handleOnClick(['AssoMutuelle','company'])} className="w-2/3 self-start flex justify-center items-center relative my-8 h-[90px]">
+            <div onClick={() => handleOnClick(['AssoMutuelle'])} className="w-2/3 self-start flex justify-center items-center relative my-8 h-[90px]">
                 <img src={teamwork} alt="" className="absolute h-full w-full object-cover"/>
                 <div className="h-full w-full absolute bg-black opacity-50"></div>
                 <p className="relative text-white">Associations / Mutuelles</p>

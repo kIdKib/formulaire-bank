@@ -31,8 +31,14 @@ const CoForm4 = () => {
             let etatTab = Object.entries(etat)
 
             for (let i = 0; i < location.state.length; i++) {
-                let data = [location.state[i][0], location.state[i][1] ]
-                tabData.push(data)
+                
+                if (i > 1) {
+                    let data = [location.state[i][0], location.state[i][1] ] 
+                    tabData.push(data)
+                } else {
+                    let data = [location.state[i][0]] 
+                    tabData.push(data)
+                }
             }
 
             if (etatTab !== undefined && tabData !== undefined) setfuseData([...tabData,...etatTab])
