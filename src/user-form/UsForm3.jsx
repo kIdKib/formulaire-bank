@@ -16,7 +16,6 @@ const UsForm3 = () => {
 
     const location = useLocation()
     const loactionData = Object.entries(location.state)
-    console.log(location.state);
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
@@ -56,7 +55,7 @@ const UsForm3 = () => {
 
         {sub && <Navigate state={fuseData} to='/user/form4' />}
 
-        <StepLoader texte={'Titulaire du compte'} niv={1} />
+        <StepLoader texte={'Titulaire du compte'} niv={60} />
         <div>
             <h2 className="text-xl text-orange-400 my-2">Contacts & Filiation</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,12 +64,12 @@ const UsForm3 = () => {
 
                     <div className="flex flex-col">
                         <label htmlFor="e-mail">Adresse électronique</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="e-mail" {...register("e-mail",{required: true})} placeholder="Entrer votre adresse email" />
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="email" id="e-mail" {...register("e-mail",{required: true})} placeholder="Entrer votre adresse email" />
                     </div>    
 
                     <div className="flex flex-col">
                         <label htmlFor="tel_bureau">Téléphone Bureau</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="tel_bureau" {...register("tel_bureau",{required: true})} placeholder="Entrer le numéro de téléphone" />
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="tel"  id="tel_bureau" {...register("tel_bureau",{required: true})} placeholder="Entrer le numéro de téléphone" />
                     </div>
 
                     <div className="flex flex-col">
@@ -88,9 +87,9 @@ const UsForm3 = () => {
                         <label htmlFor="situa_matrimoniale" className="">Situation matrimoniale</label>
                         <select name="" id="situa_matrimoniale" className="bg-white border px-2 py-2 rounded-md mb-3" {...register("situa_matrimoniale",{required: true})}>
                             <option value="" disabled selected hidden>Choississez un statut</option>
-                            <option value="Particulier">Particulier</option>
-                            <option value="Particulier">Particulier</option>
-                            <option value="Particulier">Particulier</option>
+                            <option value="Célibataire">Célibataire</option>
+                            <option value="Marié">Marié</option>
+                            <option value="Concubinage">Concubinage</option>
                         </select>
                     </div>
 

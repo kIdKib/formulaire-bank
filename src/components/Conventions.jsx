@@ -55,7 +55,6 @@ const Convention = () => {
     //Configuration dropdown
     
 
-
     //Configuration modal
     const [openModal, setOpenModal] = React.useState(false);
  
@@ -73,7 +72,7 @@ const Convention = () => {
  
     return ( <div className="w-1/3 px-4 border">
 
-        <StepLoader texte={'Lecture des conventions'} niv={1} />
+        <StepLoader texte={'Lecture des conventions'} niv={100} />
         <p className="my-5 p-3 bg-black text-white" >
             Il est nécessaire que vous preniez connaissances des 
             clauses et conventions liés aux comptes et packages.
@@ -198,16 +197,6 @@ const Convention = () => {
                 <label htmlFor="" className="ml-1">J’ai lu et j’accepte les termes et conditions</label>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -51,13 +51,11 @@ const CoForm6 = () => {
     }, [fuseData])
     //GERE TOUTE LA PARTIE DE RECEPTION DES ANCIENNES DONNNÉE ET DES NOUVELLE DONNÉE
 
-    console.log(location.state);
-
     return ( <div className="w-1/3 px-4 border">
 
         {sub && <Navigate state={fuseData} to='/company/packages' />}
 
-        <StepLoader texte={'Titulaire du compte'} niv={1} />
+        <StepLoader texte={'Titulaire du compte'} niv={70} />
         <div>
             <h2 className="text-xl text-orange-400 my-2">Informations dirigeant</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -90,12 +88,12 @@ const CoForm6 = () => {
 
                     <div className="flex flex-col">
                         <label htmlFor="Date_naissance">Date de naissance</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="Date_naissance" {...register("Date_naissance",{required: true})} placeholder="dd/mm/yyyy" />
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="date" id="Date_naissance" {...register("Date_naissance",{required: true})} placeholder="dd/mm/yyyy" />
                     </div>
 
                     <div className="flex flex-col">
                         <label htmlFor="Lieu_naissance">Lieu de naissance</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="Lieu_naissance" {...register("Lieu_naissance",{required: true})} placeholder="dd/mm/yyyy" />
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="Lieu_naissance" {...register("Lieu_naissance",{required: true})} placeholder="Lieu de naissance" />
                     </div>
                     
                     <div className="flex flex-col">
@@ -103,25 +101,30 @@ const CoForm6 = () => {
                         <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="Pays_naissance" {...register("Pays_naissance",{required: true})} placeholder="Indiquer votre pays de naissance" />
                     </div>
                     
+
                     <div className="flex flex-col">
-                        <label htmlFor="pays_pays_naissance" className="">Pays de naissance</label>
-                        <select name="" id="pays_pays_naissance" className="bg-white border px-2 py-2 rounded-md mb-3" {...register("pays_pays_naissance",{required: true})}>
-                            <option value="" disabled selected hidden>Indiquer votre pays de naissance</option>
-                            <option value="Particulier">Particulier</option>
-                            <option value="Particulier">Particulier</option>
-                            <option value="Particulier">Particulier</option>
-                        </select>
+                        <label htmlFor="pays_pays_naissance">Pays de naissance</label>
+                        <select name="countries" id="pays_pays_naissance" className="bg-white border px-2 py-2 rounded-md mb-3" {...register("pays_pays_naissance",{required: true})}>
+                            <option value="" selected disabled hidden>Indiquer votre pays de naissance</option>
+                        {CountriesList.map( (pays) => 
+                            <option key={pays.code} value={pays.name}>{pays.name}</option>
+                        )}
+                        </select>     
+        
                     </div>
 
                     <div className="flex flex-col">
-                        <label htmlFor="Nationalité" className="">Nationalité</label>
-                        <select name="" id="Nationalité" className="bg-white border px-2 py-2 rounded-md mb-3" {...register("Nationalité",{required: true})}>
-                            <option value="" disabled selected hidden>Préciser votre Nationalité</option>
-                            <option value="Particulier">Particulier</option>
-                            <option value="Particulier">Particulier</option>
-                            <option value="Particulier">Particulier</option>
-                        </select>
+                        <label htmlFor="Nationalité">Nationalité</label>
+                        <select name="countries" id="Nationalité" className="bg-white border px-2 py-2 rounded-md mb-3" {...register("Nationalité",{required: true})}>
+                            <option value="" selected disabled hidden>Indiquer votre nationalité</option>
+                        {CountriesList.map( (pays) => 
+                            <option key={pays.code} value={pays.name}>{pays.name}</option>
+                        )}
+                        </select>     
+        
                     </div>
+
+                
 
                 </div>
 

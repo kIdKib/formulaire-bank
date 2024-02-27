@@ -16,7 +16,6 @@ const UsForm2 = () => {
 
     const location = useLocation()
     const loactionData = Object.entries(location.state)
-    console.log(location.state);
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
@@ -57,7 +56,7 @@ const UsForm2 = () => {
 
         {sub && <Navigate state={fuseData} to='/user/form3' />}
 
-        <StepLoader texte={'Titulaire du compte'} niv={1} />
+        <StepLoader texte={'Titulaire du compte'} niv={40} />
         <div>
             <h2 className="text-xl text-orange-400 my-2">Identification & Adresses</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -91,7 +90,7 @@ const UsForm2 = () => {
 
                     <div className="flex flex-col">
                         <label htmlFor="date_etablissement">Date d'établissement</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="date_etablissement" {...register("date_etablissement",{required: true})} placeholder="dd/mm/yyyy" />
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="date" id="date_etablissement" {...register("date_etablissement",{required: true})} placeholder="dd/mm/yyyy" />
                     </div>
 
                     <div className="flex flex-col">
@@ -101,7 +100,7 @@ const UsForm2 = () => {
 
                     <div className="flex flex-col">
                         <label htmlFor="validite">Validité</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="validite" {...register("validite",{required: true})} placeholder="dd/mm/yyyy" />
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="date" id="validite" {...register("validite",{required: true})} placeholder="dd/mm/yyyy" />
                     </div>
 
                     <div className="flex flex-col">

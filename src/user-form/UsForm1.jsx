@@ -16,7 +16,6 @@ const UsForm1 = () => {
 
     const location = useLocation()
     const loactionData = Object.entries(location.state)
-    console.log(location.state);
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
@@ -57,7 +56,7 @@ const UsForm1 = () => {
 
         {sub && <Navigate state={fuseData} to='/user/form2' />}
 
-        <StepLoader texte={'Titulaire du compte'} niv={1} />
+        <StepLoader texte={'Titulaire du compte'} niv={20} />
         <div>
             <h2 className="text-xl text-orange-400 my-2">Informations personnelles</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -76,8 +75,8 @@ const UsForm1 = () => {
                         <label htmlFor="civilite">Civilité</label>
                         <select name="" id="civilite" className="bg-white border px-2 py-2 rounded-md mb-3" {...register("civilite",{required: true})}>
                             <option value="" disabled selected hidden>Choississez votre titre</option>
-                            <option value="Particulier">Particulier</option>
-                            <option value="Particulier">Particulier</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mme">MMe</option>
                             <option value="Particulier">Particulier</option>
                         </select>
                     </div>
@@ -95,7 +94,7 @@ const UsForm1 = () => {
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="birthday">Date de naissance</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="birthday" {...register("birthday",{required: true})} placeholder="dd/mm/yyyy" />
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="date" id="birthday" {...register("birthday",{required: true, valueAsDate: true})} placeholder="dd/mm/yyyy" />
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="lieu-naissance">Lieu de naissance</label>

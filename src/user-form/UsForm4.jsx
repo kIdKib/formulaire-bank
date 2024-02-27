@@ -15,7 +15,6 @@ const UsForm4 = () => {
 
     const location = useLocation()
     const loactionData = Object.entries(location.state)
-    console.log(location.state);
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
@@ -55,7 +54,7 @@ const UsForm4 = () => {
 
         {sub && <Navigate state={fuseData} to='/user/packages' />}
 
-        <StepLoader texte={'Titulaire du compte'} niv={1} />
+        <StepLoader texte={'Titulaire du compte'} niv={80} />
         <div>
             <h2 className="text-xl text-orange-400 my-2">Revenus & Signaletique employeur</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -114,11 +113,11 @@ const UsForm4 = () => {
 
                     <div className="flex flex-col">
                         <label htmlFor="tel_employeur">Numéro de téléphone de l'employeur</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="tel_employeur" {...register("tel_employeur",{required: true})} placeholder="Numéro de téléphone de l'employeur" />
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="tel_employeur" {...register("tel_employeur",{required: true,})} placeholder="Numéro de téléphone de l'employeur" />
                     </div>
 
                     <div className="flex flex-col">
-                        <label htmlFor="pays_resi_employeur">Pays de résidence employeur</label>
+                        <label htmlFor="pays_resi_employeur">Pays de résidence employeur</label>    
                         <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="pays_resi_employeur" {...register("pays_resi_employeur",{required: true})} placeholder="Pays de residence de l'employeur" />
                     </div>
 

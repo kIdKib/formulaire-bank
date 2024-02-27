@@ -16,11 +16,13 @@ const UsPackages = () => {
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
+    const [selectionner, setSelectionner] = useState()
 
     const [fuseData, setfuseData] = useState()
 
     const handleOnClick = (data) => {
         setEtat(data)
+        setSelectionner(data)
     }
 
     useEffect(() => {
@@ -42,10 +44,6 @@ const UsPackages = () => {
         }
     }, [etat])
 
-
-    console.log(location.state);
-    console.log(etat);
-
     
     const handleOnSubmit = () => {
         if (fuseData !== undefined) setSub(true)
@@ -56,39 +54,39 @@ const UsPackages = () => {
 
         {sub && <Navigate state={fuseData} to={`/user/packages/${etat}/include`} />}
 
-        <StepLoader texte={'Packages disponible'} niv={1} />
+        <StepLoader texte={'Packages disponible'} niv={90} />
         <p className="my-5">
             Sélectionnez un package pour découvrir les produits
             et services associés 
         </p>
 
         <div className="flex mt-5 w-full">
-            <div className="flex flex-wrap mt-5 border w-max mx-auto mb-5">
-                <div onClick={() => handleOnClick('Infinite')} className="w-[48%] mx-auto my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
+            <div className="flex flex-wrap mt-5 w-max mx-auto mb-5">
+                <div onClick={() => handleOnClick('Infinite')} className={`w-[48%] cursor-pointer mx-auto my-1 border py-5 flex flex-col justify-center items-center  ${selectionner == 'Infinite' ? "bg-white text-black shadow-2xl border-orange-600 border-4" : "bg-black text-white" } `}>
                     <h2 className="text-2xl mb-3 text-center">Pack <br /> Infinte</h2>
                     <p className="font-bold">25 000 FCFA/mois</p>
                 </div>
-                <div onClick={() => handleOnClick('Private')} className="w-[48%] mx-auto my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
+                <div onClick={() => handleOnClick('Private')} className={`w-[48%] cursor-pointer mx-auto my-1 border py-5 flex flex-col justify-center items-center ${selectionner == 'Private' ? "bg-white text-black shadow-2xl border-orange-600 border-4" : "bg-black text-white" }`}>
                     <h2 className="text-2xl mb-3 text-center">Pack <br /> Private</h2>
                     <p className="font-bold">10 000 FCFA/mois</p>
                 </div>
-                <div onClick={() => handleOnClick('Prestige')} className="w-[48%] mx-auto my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
+                <div onClick={() => handleOnClick('Prestige')} className={`w-[48%] cursor-pointer mx-auto my-1 border py-5 flex flex-col justify-center items-center ${selectionner == 'Prestige' ? "bg-white text-black shadow-2xl border-orange-600 border-4" : "bg-black text-white" }`}>
                     <h2 className="text-2xl mb-3 text-center">Pack <br /> Prestige</h2>
                     <p className="font-bold">8000 FCFA/mois</p>
                 </div>
-                <div onClick={() => handleOnClick('BonneGamme')} className="w-[48%] mx-auto my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
+                <div onClick={() => handleOnClick('BonneGamme')} className={`w-[48%] cursor-pointer mx-auto my-1 border py-5 flex flex-col justify-center items-center ${selectionner == 'BonneGamme' ? "bg-white text-black shadow-2xl border-orange-600 border-4" : "bg-black text-white" }`}>
                     <h2 className="text-2xl mb-3 text-center">Pack <br /> Bonne Gamme</h2>
                     <p className="font-bold">8000 FCFA/mois</p>
                 </div>
-                <div onClick={() => handleOnClick('MassMarket')} className="w-[48%] mx-auto my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
+                <div onClick={() => handleOnClick('MassMarket')} className={`w-[48%] cursor-pointer mx-auto my-1 border py-5 flex flex-col justify-center items-center ${selectionner == 'MassMarket' ? "bg-white text-black shadow-2xl border-orange-600 border-4" : "bg-black text-white" }`}>
                     <h2 className="text-2xl mb-3 text-center">Pack <br /> Mass Market</h2>
                     <p className="font-bold">8000 FCFA/mois</p>
                 </div>
-                <div onClick={() => handleOnClick('Etudiant')} className="w-[48%] mx-auto my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
+                <div onClick={() => handleOnClick('Etudiant')} className={`w-[48%] cursor-pointer mx-auto my-1 border py-5 flex flex-col justify-center items-center ${selectionner == 'Etudiant' ? "bg-white text-black shadow-2xl border-orange-600 border-4" : "bg-black text-white" }`}>
                     <h2 className="text-2xl mb-3 text-center">Pack <br /> Etudiant</h2>
                     <p className="font-bold">Gratuit</p>
                 </div>
-                <div onClick={() => handleOnClick('Mineur')} className="w-[48%] mx-1 my-1 border bg-black text-white py-5 flex flex-col justify-center items-center">
+                <div onClick={() => handleOnClick('Mineur')} className={`w-[48%] cursor-pointer mx-1 my-1 border py-5 flex flex-col justify-center items-center ${selectionner == 'Mineur' ? "bg-white text-black shadow-2xl border-orange-600 border-4" : "bg-black text-white" }`}>
                     <h2 className="text-2xl mb-3 text-center">Pack <br /> Mineur</h2>
                 </div>
             </div>

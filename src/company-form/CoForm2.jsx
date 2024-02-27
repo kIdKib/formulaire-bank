@@ -16,7 +16,6 @@ const CoForm2 = () => {
 
     const location = useLocation()
     const loactionData = Object.entries(location.state)
-    console.log(location.state);
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
@@ -57,7 +56,7 @@ const CoForm2 = () => {
 
         {sub && <Navigate state={fuseData} to='/company/form3' />}
 
-        <StepLoader texte={'Groupe ou société d’appartenance'} niv={1} />
+        <StepLoader texte={'Groupe ou société d’appartenance'} niv={30} />
         <div>
             <h2 className="text-xl text-orange-400 my-2">Informations personnelles</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -90,7 +89,7 @@ const CoForm2 = () => {
 
                     <div className="flex flex-col">
                         <label htmlFor="birthday_group">Date de création du groupe</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="birthday_group" {...register("birthday_group",{required: true})} placeholder="dd/mm/yyyy" />
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="date" id="birthday_group" {...register("birthday_group",{required: true})} placeholder="dd/mm/yyyy" />
                     </div>
 
                     <div className="flex flex-col">

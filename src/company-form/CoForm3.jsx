@@ -16,7 +16,6 @@ const CoForm3 = () => {
 
     const location = useLocation()
     const loactionData = Object.entries(location.state)
-    console.log(location.state);
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
@@ -55,9 +54,8 @@ const CoForm3 = () => {
     return ( <div className="w-1/3 px-4 border">
 
         {sub && <Navigate state={fuseData} to='/company/form4' />}
-l
-        <StepLoader texte={'Personne désignée'} niv={1} />
-        <button onClick={() => history(-1)}> Go back</button>
+
+        <StepLoader texte={'Personne désignée'} niv={40} />
 
         <div>
             <h2 className="text-xl text-orange-400 my-2">Informations personnelles</h2>

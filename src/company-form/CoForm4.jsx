@@ -56,7 +56,7 @@ const CoForm4 = () => {
 
         {sub && <Navigate state={fuseData} to='/company/form5' />}
 
-        <StepLoader texte={'Informations financières de la société'} niv={1} />
+        <StepLoader texte={'Informations financières de la société'} niv={50} />
         <div>
             <h2 className="text-xl text-orange-400 my-2">Informations personnelles</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -99,7 +99,7 @@ const CoForm4 = () => {
                
                     <div className="flex flex-col">
                         <label htmlFor="Date_dernière_requisition">Date dernière requisition</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="Date_dernière_requisition" {...register("Date_dernière_requisition",{required: true})} placeholder="dd/mm/yyyy" />
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="date" id="Date_dernière_requisition" {...register("Date_dernière_requisition",{required: true})} placeholder="dd/mm/yyyy" />
                     </div>
 
                     <div className="flex flex-col">
@@ -124,7 +124,7 @@ const CoForm4 = () => {
 
                 </div>
 
-                <FootBut disabled={true} dataForm={etat}/>
+                <FootBut dataForm={etat}/>
             </form>
             
         </div>

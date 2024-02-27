@@ -16,7 +16,6 @@ const OptPack = () => {
 
     const [fuseData, setfuseData] = useState()
 
-    console.log(location.state);
 
     
     const lien = window.location.href.split('/')
@@ -29,7 +28,6 @@ const OptPack = () => {
     let dataOutInclFullTab
 
     let handleOnSubmit = (title) => {
-        console.log(title);
         setfuseData([...location.state, title])
     }
 
@@ -48,7 +46,7 @@ const OptPack = () => {
             break
         }
     }
-    console.log(fuseData);
+    
     return ( <div className="mt-14">
         {sub && <Navigate state={fuseData} to='/user/convention' />}
 

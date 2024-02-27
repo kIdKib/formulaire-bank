@@ -16,7 +16,6 @@ const CoForm1 = () => {
 
     const location = useLocation()
     const loactionData = Object.entries(location.state)
-    console.log(location.state);
 
     const [etat, setEtat] = useState()
     const [sub, setSub] = useState(false)
@@ -57,7 +56,7 @@ const CoForm1 = () => {
 
         {sub && <Navigate state={fuseData} to='/company/form2' />}
 
-        <StepLoader texte={'Titulaire du compte'} niv={1} />
+        <StepLoader texte={'Titulaire du compte'} niv={20} />
         <div>
             <h2 className="text-xl text-orange-400 my-2">Informations personnelles</h2>
             <form onSubmit={handleSubmit(onSubmit)}>

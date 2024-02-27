@@ -7,6 +7,7 @@ import CountriesList from "./Component/CountryList"
 import FootBut from "../components/FootBut";
 import { Navigate, useLocation } from "react-router-dom";
 
+
 const CoForm5 = () => {
 
     const {register, handleSubmit,} = useForm()
@@ -54,7 +55,7 @@ const CoForm5 = () => {
 
         {sub && <Navigate state={fuseData} to='/company/form6' />}
 
-        <StepLoader texte={'Titulaire du compte'} niv={1} />
+        <StepLoader texte={'Titulaire du compte'} niv={60} />
         <div>
             <h2 className="text-xl text-orange-400 my-2">Composition actionnariat</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -70,14 +71,15 @@ const CoForm5 = () => {
                         <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="capital_detenu" {...register("capital_detenu",{required: true})} placeholder="Entrer le pourcentage (en chiffre)" />
                     </div>   
 
-
                     <div className="flex flex-col">
-                        <label htmlFor="Pays_Nationalité" className="">Pays / Nationalité</label>
-                        <select name="" id="Pays_Nationalité" className="bg-white border px-2 py-2 rounded-md mb-3" {...register("Pays_Nationalité",{required: true})}>
-                            <option value="Particulier">Particulier</option>
-                            <option value="Particulier">Particulier</option>
-                            <option value="Particulier">Particulier</option>
-                        </select>
+                        <label htmlFor="Pays_Nationalité">Pays / Nationalité</label>
+                        <select name="countries" id="Pays_Nationalité" className="bg-white border px-2 py-2 rounded-md mb-3" {...register("Pays_Nationalité",{required: true})}>
+                            <option value="" selected disabled hidden>Indiquer votre pays</option>
+                        {CountriesList.map( (pays) => 
+                            <option key={pays.code} value={pays.name}>{pays.name}</option>
+                        )}
+                        </select>     
+        
                     </div>
                     
                     <div className="flex flex-col">

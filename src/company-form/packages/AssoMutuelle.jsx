@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const AssoMutuelle = () => {
+
+    let h = useNavigate()
 
 
     //GERE TOUTE LA PARTIE DE RECEPTION DES ANCIENNES DONNNÉE ET DES NOUVELLE DONNÉE
@@ -131,9 +133,9 @@ const AssoMutuelle = () => {
             </div>
         </div>
         <div className="flex justify-between mx-5">
-            <button className= {`flex items-center`} >
+            <button className= {`flex items-center`} onClick={() => h(-1)}>
                 <div className= {`flex justify-center items-center text-4xl text-white bg-black mr-2 rounded-full border w-16 h-16 text-white-200 bg-slate-200' `} ><FaAngleLeft/></div>
-                <span className={`text-xl text-gray-300 `} >RETOUR</span>
+                <span className={`text-xl `} >RETOUR</span>
             </button>
             <button onClick={onSubmit} className="flex items-center ">
                 <span className="text-xl text-orange-600">Je soucris</span>

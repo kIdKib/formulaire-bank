@@ -15,9 +15,11 @@ const Form1 = () => {
 
     const [etat, setEtat] = useState('')
     const [sub, setSub] = useState(false)
+    const [selectionner, setSelectionner] = useState()
 
     const handleClick = (value) => {
-        setEtat(value) 
+        setEtat(value)
+        setSelectionner(value)
     }
 
     const handleSubmit = (e) => {
@@ -35,17 +37,17 @@ const Form1 = () => {
         <div className="px-4 pt-6 bg-white">
             <StepLoader texte={'Sélectionner un pays'} niv={10} />
             <div className="mt-8">
-                <button onClick={() => handleClick('CI')} className="flex items-center w-full border rounded-xl px-4 py-3 my-6 relative">
+                <button onClick={() => handleClick('CI')} className={`flex items-center w-full border rounded-xl px-4 py-3 my-6 relative cursor-pointer ${selectionner== 'CI' ? 'bg-orange-600 text-white' :  ''}`}>
                     <img src={CI} alt="" className="w-12 h-12 rounded-full"/>
                     <p className="text-2xl font-normal ml-6">Côte d'Ivoire</p>
                     <div className="text-2xl absolute right-3"><FaAngleRight /></div>
                 </button>
-                <button onClick={() => handleClick('SN')} className="flex items-center w-full border rounded-xl px-4 py-3 my-6 relative">
+                <button onClick={() => handleClick('SN')} className={`flex items-center w-full border rounded-xl px-4 py-3 my-6 relative cursor-pointer ${selectionner== 'SN' ? 'bg-orange-600 text-white' :  ''}`}>
                     <img src={SN} alt="" className="w-12 h-12 rounded-full"/>
                     <p className="text-2xl font-normal ml-6">Sénégal</p>
                     <div className="text-2xl absolute right-3"><FaAngleRight /></div>
                 </button>
-                <button onClick={() => handleClick('CV')} className="flex items-center w-full border rounded-xl px-4 py-3 my-6 relative">
+                <button onClick={() => handleClick('CV')} className={`flex items-center w-full border rounded-xl px-4 py-3 my-6 relative cursor-pointer ${selectionner== 'CV' ? 'bg-orange-600 text-white' :  ''}`}>
                     <img src={CP} alt="" className="w-12 h-12 rounded-full"/>
                     <p className="text-2xl font-normal ml-6">Cap Vert</p>
                     <div className="text-2xl absolute right-3"><FaAngleRight /></div>
