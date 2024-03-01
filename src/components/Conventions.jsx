@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StepLoader from "./StepLoader";
 
 //Configuration dropdown
@@ -44,12 +44,17 @@ function Icon({ id, open }) {
 
 const Convention = () => {
 
-    //Configuration dropdown
-    const [open, setOpen] = React.useState(1);
-    const handleOpen = (value) => setOpen(open === value ? 0 : value);
+    let ElementConverted
+    let element = []
 
     const location = useLocation()
-    console.log(location.state);
+    const locationData = location.state
+
+    const [elementData, setElementData] = useState([])
+
+    //Configuration dropdown
+    const [open, setOpen] = React.useState(1);
+    const handleOpen = (value) => setOpen(open === value ? 0 : value)
 
     const {register, handleSubmit} = useForm()
     //Configuration dropdown
@@ -57,18 +62,77 @@ const Convention = () => {
 
     //Configuration modal
     const [openModal, setOpenModal] = React.useState(false);
+
  
 
     const handleOpenModal = () => {
         const checkbox = document.getElementById('checkbox')
         if (checkbox.checked) {
             setOpenModal(!openModal);
-            console.log('tu as le droit de passer au suivant');
         }
+
+
+
+
+
+        for (let i = 0; i < locationData.length; i++) {
+            if (i == 0 ) {
+                element['pays'] = locationData[i] ;
+                
+            } else if (i == 1) {
+                element['user_type'] = locationData[i][0][0] ;
+            } else if (i >= 41 && element['user_type'] == 'user') {
+                if (i == 41) {
+                    element['pack'] = locationData[i] ;
+                } else if (i == 42) {
+                    element['type_pack'] = locationData[i] ;
+                }
+            } else {
+                element[locationData[i][0]] = locationData[i][1] ;
+            }
+        }
+
+        ElementConverted = element
+
+        
+        setElementData(element)
+        
     }
+
+    
+
+    useEffect(() => {
+        if (elementData.length !== undefined) {
+
+            let obj = Object.assign({}, elementData);
+            
+            if (typeof obj != undefined) {
+                console.log(obj);
+                if(elementData['user_type'] == 'user') {const resultatEnvoi = fetch('http://localhost:8000/api/users', {
+                        method: "POST", 
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(obj)
+                    })
+                    resultatEnvoi
+
+                } else if (elementData['user_type'] == 'company') {const resultatEnvoi = fetch('http://localhost:8000/api/companies', {
+                        method: "POST", 
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(obj)
+                    })
+                    resultatEnvoi
+                }
+            }
+        }
+        
+    }, [elementData])
+    
     //Configuration modal
 
-    console.log()
  
     return ( <div className="w-1/3 px-4 border">
 

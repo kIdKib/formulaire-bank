@@ -13,6 +13,10 @@ import CP from "../img/CP.png"
 
 const Form1 = () => {
 
+    const resultat = fetch("http://localhost:8000/api/v1/users").then(res => {
+        return res.json()
+    }).then(res => console.log(res))
+
     const [etat, setEtat] = useState('')
     const [sub, setSub] = useState(false)
     const [selectionner, setSelectionner] = useState()

@@ -74,8 +74,8 @@ const UsForm2 = () => {
                     </div>
 
                     <div className="flex flex-col">
-                        <label htmlFor="piece-id" className="">Pièce d'Identification</label>
-                        <select name="" id="piece-id" className="bg-white border px-2 py-2 rounded-md mb-3" {...register("piece-id",{required: true})}>
+                        <label htmlFor="piece_id" className="">Pièce d'Identification</label>
+                        <select name="" id="piece_id" className="bg-white border px-2 py-2 rounded-md mb-3" {...register("piece_id",{required: true})}>
                             <option value="" disabled selected hidden>Choississez votre pièce</option>
                             <option value="Particulier">Particulier</option>
                             <option value="Particulier">Particulier</option>

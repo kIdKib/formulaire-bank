@@ -85,8 +85,8 @@ const UsForm1 = () => {
                         <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="nom" {...register("nom",{required: true})} placeholder="Entrer votre nom de famille" />
                     </div>                
                     <div className="flex flex-col">
-                        <label htmlFor="nom-jeune-fille">Nom de jeune de fille</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="nom-jeune-fille" {...register("nom-jeune-fille",{required: true})} placeholder="Entrer votre nom de jeune fille" />
+                        <label htmlFor="nom_jeune-fille">Nom de jeune de fille</label>
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="nom_jeune-fille" {...register("nom_jeune-fille",{required: true})} placeholder="Entrer votre nom de jeune fille" />
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="prenom">Prenom</label>
@@ -97,8 +97,8 @@ const UsForm1 = () => {
                         <input className="bg-white border px-2 py-2 rounded-md mb-3" type="date" id="birthday" {...register("birthday",{required: true, valueAsDate: true})} placeholder="dd/mm/yyyy" />
                     </div>
                     <div className="flex flex-col">
-                        <label htmlFor="lieu-naissance">Lieu de naissance</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="lieu-naissance" {...register("lieu-naissance",{required: true})} placeholder="Lieu de naissance" />
+                        <label htmlFor="lieu_naissance">Lieu de naissance</label>
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="text" id="lieu_naissance" {...register("lieu_naissance",{required: true})} placeholder="Lieu de naissance" />
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="pays-naissance">Pays de naissance</label>

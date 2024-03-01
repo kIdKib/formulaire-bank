@@ -63,8 +63,8 @@ const UsForm3 = () => {
                 <div className="h-[75vh] overflow-scroll scroll">
 
                     <div className="flex flex-col">
-                        <label htmlFor="e-mail">Adresse électronique</label>
-                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="email" id="e-mail" {...register("e-mail",{required: true})} placeholder="Entrer votre adresse email" />
+                        <label htmlFor="e_mail">Adresse électronique</label>
+                        <input className="bg-white border px-2 py-2 rounded-md mb-3" type="email" id="e_mail" {...register("e_mail",{required: true})} placeholder="Entrer votre adresse email" />
                     </div>    
 
                     <div className="flex flex-col">
